@@ -1,6 +1,7 @@
 
 # {EPITECH} - 101Pong
 
+(We are making a bonus)
 Pong, an arcade game developped in 1972 by Ralph Baer (Atari), is the first ever successful video game. It
 was inspired by the very first video game, Tennis for Two, developped in 1958 by William Higinbotham on
 an oscilloscope
@@ -45,3 +46,6 @@ The incidence angle is:
 - [Alexandre](https://github.com/Alexandre-brault)
 
 
+## Screenshots
+
+![101Pong](https://media.discordapp.net/attachments/714570896144072797/1040740022376206356/101Pong.png)
