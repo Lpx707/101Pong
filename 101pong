@@ -1,0 +1,73 @@
+#!/usr/bin/python3
+
+from math import *
+import sys
+
+
+puissance = pow
+racine = sqrt
+
+
+# Check if the number of arguments is correct
+if len(sys.argv) != 8 :
+    print("You need to enter 7 arguments")
+    sys.exit(84)
+
+# Check if the time is an integer
+try:
+    t = int(sys.argv[7])
+except ValueError:
+    print("The time must be an integer")
+    sys.exit(84)
+
+# Check if the arguments are numbers
+try:
+    x0 = float(sys.argv[1])
+    y0 = float(sys.argv[2])
+    z0 = float(sys.argv[3])
+    x1 = float(sys.argv[4])
+    y1 = float(sys.argv[5])
+    z1 = float(sys.argv[6])
+    t  = int(sys.argv[7])
+
+
+# If not, print an error message and exit
+except ValueError:
+    print("Invalid argument, try this\n")
+    print ("./101pong x0 y0 z0 x1 y1 z1 n\n")
+    sys.exit(84)
+
+# Check if time is positive
+if (t < 0):
+    print ("The time have to be positive")
+    sys.exit(84)
+
+
+# VELOCITY
+v_x0 = (x1 - x0)
+v_y0 = (y1 - y0)
+v_z0 = (z1 - z0)
+
+# COORDINATES
+xt = x0 + (v_x0 * (t + 1))
+yt = y0 + (v_y0 * (t + 1))
+zt = z0 + (v_z0 * (t + 1))
+
+# ANGLE
+velocity   = racine(puissance(v_x0, 2) + puissance(v_y0, 2) + puissance(v_z0, 2))
+if velocity == 0:
+        incid_angle = 0
+else:
+        incid_angle = abs(90 - degrees(acos(v_z0 / velocity)))
+
+# PRINT
+print("The velocity vector of the ball is:")
+print("(%.2f, %.2f, %.2f)" %(v_x0, v_y0, v_z0))
+print("At time t + ", t,", ball coordinates will be:")
+print("(%.2f, %.2f, %.2f)" %(xt, yt, zt))
+if (z1 >= 0 and v_z0 < 0) or (z1 < 0 and v_z0 >= 0) or (z1 == 0 and z0 == 0):
+        print("The incidence angle is:")
+        print("%.2f" % incid_angle, "degrees")
+else:
+        print("The ball won't reach the bat.")
+sys.exit(0)
